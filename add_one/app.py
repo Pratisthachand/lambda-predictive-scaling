@@ -3,7 +3,10 @@ import time
 
 print("Initializing the lambda function")
 
-time.sleep(1) #simulating time taken to complete a large task
+#simulating time taken to complete a large task
+#will be replaced with more extensive functions later
+
+time.sleep(1)
 
 print("Initialization complete!")
 

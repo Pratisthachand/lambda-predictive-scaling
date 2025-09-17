@@ -24,10 +24,10 @@ Resources:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /hello
-            Method: get
-      # uncomment the below lines when doing sam deploy
-      # ApplicationInsightsMonitoring:
-      #   Enabled: false
+            Method: post
+      # comment the below lines when doing sam build
+      ApplicationInsightsMonitoring:
+        Enabled: false
 
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group
@@ -49,7 +49,7 @@ Outputs:
   AddOneApi:
     Description: API Gateway endpoint URL for Prod stage for Hello World
       function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/hello/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/hello"
   AddOneFunction:
     Description: Hello World Lambda Function ARN
     Value: !GetAtt AddOneFunction.Arn
