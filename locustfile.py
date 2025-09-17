@@ -11,7 +11,7 @@ class PeriodicUser(HttpUser):
     @tag('periodic')
     def my_periodic_task(self):
         payload = {"number": 10}
-        self.client.post("/hello", json=payload)
+        self.client.post("/add_one", json=payload)
 
 
 #A user class for a bursty (sudden spike) workload
@@ -23,7 +23,7 @@ class BurstyUser(HttpUser):
     @tag('bursty')
     def my_burst_task(self):
         payload = {"number": 10}
-        self.client.post("/hello", json=payload)
+        self.client.post("/add_one", json=payload)
 
 
 #A user class that combines both periodic and bursty behavior
@@ -35,9 +35,9 @@ class MixedWorkloadUser(HttpUser):
     @task(weight=9)
     def periodic_task(self):
         payload = {"number": 10}
-        self.client.post("/hello", json=payload)
+        self.client.post("/add_one", json=payload)
 
     @task(weight=1)
     def burst_task(self):
         payload = {"number": 10}
-        self.client.post("/hello", json=payload)
+        self.client.post("/add_one", json=payload)
